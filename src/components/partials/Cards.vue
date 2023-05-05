@@ -7,7 +7,7 @@ export default{
         original_title : String,
         img : Object,
         lang: String,
-        vote: String,
+        vote: Number,
     },
     data(){
         return{
@@ -21,10 +21,10 @@ export default{
 <template>
     <div class="dc-card">
         <ul>
-            <li>{{ title }}</li>
-            <li>{{ original_title }}</li>
+            <li>Titolo: {{ title }}</li>
+            <li>Titolo originale: {{ original_title }}</li>
             <li>{{ lang }}</li>
-            <li>{{ vote }}</li>
+            <li>{{ vote }} /10</li>
         </ul>
 
     </div>

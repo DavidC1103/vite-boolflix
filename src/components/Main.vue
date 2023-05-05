@@ -19,7 +19,7 @@ export default{
     <main>
         <div class="dc-container">
             <Cards
-            v-for="card in store.arrPop" 
+            v-for="card in store.arrAllMov " 
             :key="card.id"
             :title="card.title"
             :original_title="card.original_title"
