@@ -42,6 +42,7 @@ export default{
         padding-left: 0;
         list-style: none;
         h5{
+            padding-top: 10px;
             color: white;
         }
         span{

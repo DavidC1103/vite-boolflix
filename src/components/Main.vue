@@ -49,7 +49,6 @@ export default{
                 <mostPop
                 :key="card.id"
                 :title="card.title"
-                :original_title="card.original_title"
                 :lang="card.original_language"
                 :vote="(card.vote_average / 2) "
                 :image="card.backdrop_path"/>
@@ -73,7 +72,6 @@ export default{
                 <mostPop
                 :key="card.id"
                 :title="card.title"
-                :original_title="card.original_title"
                 :lang="card.original_language"
                 :vote="Math.ceil(card.vote_average / 2)"
                 :image="card.backdrop_path"/>
@@ -98,7 +96,6 @@ export default{
 
                     <mostPop 
                     :title="card.title"
-                    :original_title="card.original_title"
                     :lang="card.original_language"
                     :vote="Math.ceil(card.vote_average / 2)"
                     :image="card.backdrop_path"/>
@@ -119,8 +116,7 @@ export default{
                 class="mySwiper">
                 <swiper-slide v-for="card in store.arrAllSeries " :key="card.id">
                     <mostPop
-                    :title="card.title"
-                    :original_title="card.original_title"
+                    :title="card.name"
                     :lang="card.original_language"
                     :vote="Math.ceil(card.vote_average / 2)"
                     :image="card.backdrop_path"/>
@@ -144,6 +140,10 @@ h2{
 
 .mostPop{
     margin-top: 20px;
+}
+
+.seriesTV{
+    margin-bottom: 50px;
 }
 
 

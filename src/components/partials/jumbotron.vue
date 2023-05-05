@@ -16,6 +16,7 @@ export default {
                 Otto ladri si barricano nell'edificio della Zecca spagnola con alcuni ostaggi, mentre una mente criminale manipola la polizia per mettere in atto il suo piano.
             </div>
         </div>
+        <div class="jumbo-faded"></div>
     </div>
   
 </template>
@@ -62,6 +63,11 @@ export default {
             color: #111;
             background-color: white;
         }
+    }
+    .jumbo-faded{
+        margin-top: 290px;
+        height: 7rem;
+        background-image: linear-gradient(180deg, transparent, rgba(37,37,37,0.61),#111);
     }
 }
 
