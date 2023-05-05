@@ -1,96 +1,108 @@
 <script>
 import {store} from '../../data/store'
 import mostPop from './partials/mostPop.vue'
+import Jumbotron from '../components/partials/jumbotron.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Navigation, EffectFade } from 'swiper';
-
+import { Navigation, EffectFade } from 'swiper';
 
 
 export default{
-    components:{
-        mostPop,
-        Swiper,
-        SwiperSlide,
+    components: {
+      Swiper,
+      SwiperSlide,
+      mostPop,
+      Jumbotron
     },
     setup() {
-        const onSwiper = (swiper) => {
-        console.log(swiper);
-    };
-        const onSlideChange = () => {
-        console.log('slide change');
-
-        return {
-            modules: [Pagination, Navigation, EffectFade],
-            onSwiper,
-            onSlideChange
+      return {
+        modules: [ EffectFade, Navigation],
       };
-    }
-},
+    },
+    
     data(){
         return{
             store,
             
         }
     }
-    
 }
+    
 </script>
 
 <template>
-    <main class="dc-container ">
+    <Jumbotron/>
+    <main class="container-fluid">
         <div class="mostPop">
-            <h2>FILM</h2>
+            <h2>PIU' POPOLARI</h2>
             
             <swiper
-            :slidesPerView="8"
-            :spaceBetween="30"
-            :loop="true"
-            @swiper="onSwiper"
-            @slideChange="onSlideChange"
-            :pagination="{
+                :slidesPerView="8"
+                :spaceBetween="10"
+                :loop="true"
+                :pagination="{
                 clickable: true,
-            }"
-            modules=""
-            :navigation="true"
-            class="mySwiper">
+                }"
+                :navigation="true"
+                :modules="modules"
+                class="mySwiper">
+                <swiper-slide v-for="card in store.arrPop "  :key="card.id">
                 <mostPop
-                v-for="card in store.arrAllMov " 
                 :key="card.id"
                 :title="card.title"
                 :original_title="card.original_title"
                 :lang="card.original_language"
                 :vote="card.vote_average"
-                :image="card.backdrop_path"
-                />
+                :image="card.backdrop_path"/>
+                </swiper-slide>
             </swiper>
         </div>
 
+        <div class="film">
+            <h2>FILM</h2>
+            <swiper
+                :slidesPerView="8"
+                :spaceBetween="10"
+                :loop="true"
+                :pagination="{
+                clickable: true,
+                }"
+                :navigation="true"
+                :modules="modules"
+                class="mySwiper">
+                <swiper-slide v-for="card in store.arrAllMovies " :key="card.id">
+
+                    <mostPop 
+                    :title="card.title"
+                    :original_title="card.original_title"
+                    :lang="card.original_language"
+                    :vote="card.vote_average"
+                    :image="card.backdrop_path"/>
+                 </swiper-slide>
+            </swiper>
+        </div>
         <div class="seriesTV">
             <h2>SERIE TV</h2>
-            
             <swiper
             :slidesPerView="8"
-            :spaceBetween="30"
+            :spaceBetween="10"
             :loop="true"
-            @swiper="onSwiper"
-            @slideChange="onSlideChange"
             :pagination="{
                 clickable: true,
             }"
-            modules=""
-            :navigation="true"
-            class="mySwiper">
-                <mostPop
-                v-for="card in store.arrAllSeries " 
-                :key="card.id"
-                :title="card.title"
-                :original_title="card.original_title"
-                :lang="card.original_language"
-                :vote="card.vote_average"
-                :image="card.backdrop_path"
-                />
+                :navigation="true"
+                :modules="modules"
+                class="mySwiper">
+                <swiper-slide v-for="card in store.arrAllSeries " :key="card.id">
+                    <mostPop
+                    :title="card.title"
+                    :original_title="card.original_title"
+                    :lang="card.original_language"
+                    :vote="card.vote_average"
+                    :image="card.backdrop_path"/>
+                </swiper-slide>
             </swiper>
         </div>
+
     </main>
 </template>
 
@@ -98,14 +110,15 @@ export default{
 @import '../../node_modules/swiper/swiper.css';
 @import '../../scss/partials/swiper';
 
+h2{
+    padding-top: 20px;
+    display: block;
+    color: white;
+}
 
 
 .mostPop{
     margin-top: 200px;
-    h2{
-        padding-top: 20px;
-        display: block;
-    }
 }
 
 

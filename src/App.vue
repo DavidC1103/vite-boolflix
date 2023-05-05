@@ -25,6 +25,8 @@ export default{
             axios.get(store.apiMostPop)
             .then(res =>{
                 store.arrPop = res.data.results
+                console.log(store.apiMostPop);
+                console.log(res.data.results);
             })
         },
         getAllMovies(){
@@ -34,7 +36,7 @@ export default{
                 }
             })
             .then(res =>{
-                store.arrAllMov = res.data.results
+                store.arrAllMovies = res.data.results
             })
         },
         getSeries(){
@@ -46,8 +48,6 @@ export default{
             
             .then(res =>{
                 store.arrAllSeries = res.data.results
-                console.log(store.arrAllSeries);
-                console.log(res.data.results);
             })
         }
 

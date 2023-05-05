@@ -11,8 +11,8 @@ export default{
 </script>
 
 <template>
-    <header>
-        <div class="nav card-flex justify-content-between align-items-center container-fluid">
+    
+        <div class="dc-nav d-flex justify-content-between align-items-center container-fluid">
 
             <img class="logo" src="../assets/img/logo-boolflix.png" alt="">
 
@@ -36,7 +36,6 @@ export default{
             </div>
         </div>
         
-    </header>
   
 </template>
 
@@ -44,12 +43,14 @@ export default{
 header{
     margin-bottom: 50px;
 }
-.nav{
+.dc-nav{
     position: fixed;
     top: 0;
     width: 100%;
     padding: 20px;
-    z-index: 1;
+    z-index: 999;
+    transition-timing-function: ease-in;
+    transition: all 0.5;
     .logo{
         width: 120px;
         object-fit: contain;
