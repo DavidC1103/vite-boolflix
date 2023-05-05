@@ -27,7 +27,7 @@ export default{
                          class=" dc-border rounded-0 form-control bg-transparent"
                          placeholder="Cerca un film"
                          v-model="store.searchMovie"
-                         @keyup.enter="$emit('findMovie'), store.searchMovie =''"
+                         @keyup.enter="$emit('findMovie'),$emit('findSeries'), store.searchMovie =''"
                          >
                 </div>
                 

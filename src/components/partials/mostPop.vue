@@ -5,7 +5,7 @@ export default{
     props:{
         title: String,
         original_title : String,
-        img : Object,
+        image : String,
         lang: String,
         vote: Number,
     },
@@ -19,22 +19,23 @@ export default{
 </script>
 
 <template>
-    <div class="dc-card">
+    
+    <div class="dc-card d-flex">
         <ul>
+            <li><img :src="`https://image.tmdb.org/t/p/w200${image}`" alt=""></li>
             <li>Titolo: {{ title }}</li>
             <li>Titolo originale: {{ original_title }}</li>
             <li>{{ lang }}</li>
             <li>{{ vote }} /10</li>
         </ul>
-
     </div>
   
 </template>
 
 <style lang="scss">
  .dc-card{
-        background-color: green;
-        width: calc(100% / 5);
+        background-color: #111;
+      
         margin-bottom: 50px;
         margin-top: 100px;
         ul{

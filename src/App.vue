@@ -11,6 +11,8 @@ export default{
     components:{
         Header,
         Main,
+  
+
     },
     data(){
         return{
@@ -26,27 +28,34 @@ export default{
             })
         },
         getAllMovies(){
-            console.log(store.apiAllMovies);
-            console.log(store.searchMovie);
             axios.get(store.apiAllMovies ,{
                 params:{
-                    query: store.searchMovie
-    
+                    query: store.searchMovie,
                 }
-
             })
-
             .then(res =>{
                 store.arrAllMov = res.data.results
-                console.log(store.arrAllMov);
+            })
+        },
+        getSeries(){
+            axios.get(store.apiAllSeries ,{
+                params:{
+                    query: store.searchMovie,
+                }
+            })
+            
+            .then(res =>{
+                store.arrAllSeries = res.data.results
+                console.log(store.arrAllSeries);
+                console.log(res.data.results);
             })
         }
 
 },
-   
     mounted(){
         this.getMostPop()
         this.getAllMovies()
+        this.getSeries()
     }
 }
 
@@ -54,15 +63,15 @@ export default{
 
 <template>
 
-    <Header @findMovie="getAllMovies"/>
+    <Header @findMovie="getAllMovies" @findSeries="getSeries"/>
+
     <Main/>
  
 </template>
 
 <style lang="scss">
 @use '../scss/main.scss' as *;
-span{
-    color: white;
-}
+
+
 
 </style>

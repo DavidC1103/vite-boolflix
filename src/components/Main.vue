@@ -1,14 +1,35 @@
 <script>
 import {store} from '../../data/store'
-import Cards from './partials/Cards.vue'
+import mostPop from './partials/mostPop.vue'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Pagination, Navigation, EffectFade } from 'swiper';
+
+
 
 export default{
     components:{
-        Cards
+        mostPop,
+        Swiper,
+        SwiperSlide,
     },
+    setup() {
+        const onSwiper = (swiper) => {
+        console.log(swiper);
+    };
+        const onSlideChange = () => {
+        console.log('slide change');
+
+        return {
+            modules: [Pagination, Navigation, EffectFade],
+            onSwiper,
+            onSlideChange
+      };
+    }
+},
     data(){
         return{
-            store
+            store,
+            
         }
     }
     
@@ -16,32 +37,78 @@ export default{
 </script>
 
 <template>
-    <main>
-        <div class="dc-container">
-            <Cards
-            v-for="card in store.arrAllMov " 
-            :key="card.id"
-            :title="card.title"
-            :original_title="card.original_title"
-            :lang="card.original_language"
-            :vote="card.vote_average"
-            />
-
+    <main class="dc-container ">
+        <div class="mostPop">
+            <h2>FILM</h2>
+            
+            <swiper
+            :slidesPerView="8"
+            :spaceBetween="30"
+            :loop="true"
+            @swiper="onSwiper"
+            @slideChange="onSlideChange"
+            :pagination="{
+                clickable: true,
+            }"
+            modules=""
+            :navigation="true"
+            class="mySwiper">
+                <mostPop
+                v-for="card in store.arrAllMov " 
+                :key="card.id"
+                :title="card.title"
+                :original_title="card.original_title"
+                :lang="card.original_language"
+                :vote="card.vote_average"
+                :image="card.backdrop_path"
+                />
+            </swiper>
         </div>
-      
 
+        <div class="seriesTV">
+            <h2>SERIE TV</h2>
+            
+            <swiper
+            :slidesPerView="8"
+            :spaceBetween="30"
+            :loop="true"
+            @swiper="onSwiper"
+            @slideChange="onSlideChange"
+            :pagination="{
+                clickable: true,
+            }"
+            modules=""
+            :navigation="true"
+            class="mySwiper">
+                <mostPop
+                v-for="card in store.arrAllSeries " 
+                :key="card.id"
+                :title="card.title"
+                :original_title="card.original_title"
+                :lang="card.original_language"
+                :vote="card.vote_average"
+                :image="card.backdrop_path"
+                />
+            </swiper>
+        </div>
     </main>
 </template>
 
 <style lang="scss">
-.dc-container{
-    width: 1320px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+@import '../../node_modules/swiper/swiper.css';
+@import '../../scss/partials/swiper';
 
+
+
+.mostPop{
+    margin-top: 200px;
+    h2{
+        padding-top: 20px;
+        display: block;
+    }
 }
+
+
 
 
 </style>
