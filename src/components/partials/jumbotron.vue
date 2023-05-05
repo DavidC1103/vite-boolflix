@@ -7,14 +7,14 @@ export default {
 <template>
     <div class="dc-jumbotron">
         <div class="jumbo-content">
-            <h1>Ciao</h1>
+            <h1>La Casa di Carta</h1>
             <div class="dc-buttons">
                 <button class="dc-button">Guarda Ora!</button>
                 <button class="dc-button">Aggiungi alla lista</button>
             </div>
-        </div>
-        <div class="jumbo-description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus neque quasi quidem! Explicabo, minus sapiente doloremque tempora illum sed praesentium aspernatur expedita. Explicabo id illo quae! Illum recusandae ullam cumque.
+            <div class="jumbo-description">
+                Otto ladri si barricano nell'edificio della Zecca spagnola con alcuni ostaggi, mentre una mente criminale manipola la polizia per mettere in atto il suo piano.
+            </div>
         </div>
     </div>
   
@@ -22,10 +22,11 @@ export default {
 
 <style lang="scss">
 .dc-jumbotron{
-    background-image: url('../../assets/img/seven-kings-must-die-last-kingdom.jpg');
+    background-image: url('../../assets/img/banner2.jpg');
     background-size: cover;
+    background-position: center;
     object-fit: contain;
-    height: 500px;
+    height: 600px;
     color: white;
     .jumbo-content{
         margin-left: 50px;
@@ -39,11 +40,28 @@ export default {
     }
     .jumbo-description{
         width: 45rem;
-        line-height: 1.3rem;
+        line-height: 1.8rem;
         padding-top: 1rem;
-        font-size: 0.8rem;
+        font-size: 1rem;
         max-width: 340px;
         height: 180px;
+    }
+    .dc-button{
+        cursor: pointer;
+        color: white;
+        border: none;
+        font-weight: 700;
+        border-radius: 0.2vw;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+        margin-right: 5px;
+        background-color: rgba(51,51,51, 0.5);
+        &:hover{
+            color: #111;
+            background-color: white;
+        }
     }
 }
 

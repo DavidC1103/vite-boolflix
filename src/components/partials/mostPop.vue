@@ -22,7 +22,7 @@ export default{
     
     <div class="dc-card d-flex">
         <ul>
-            <li class="posters"><img :src="`https://image.tmdb.org/t/p/w200${image}`" alt="" class="poster"></li>
+            <li class="posters"><img :src="`https://image.tmdb.org/t/p/w500${image}`" alt="" class="poster"></li>
             <!--
                 <li>Titolo: {{ title }}</li>
                 <li>Titolo originale: {{ original_title }}</li>
