@@ -9,6 +9,8 @@ export const store = reactive({
   apiAllSeries:'https://api.themoviedb.org/3/search/tv?api_key=184e820e32cadab24e0fe3a59c9aca6a&language=it-IT',
   arrAllSeries:[],
   searchMovie:'',
+  apiTopRated:'https://api.themoviedb.org/3/movie/top_rated?api_key=184e820e32cadab24e0fe3a59c9aca6a&language=it-IT',
+  arrTopRated:[]
 
 
     

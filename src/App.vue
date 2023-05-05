@@ -25,8 +25,6 @@ export default{
             axios.get(store.apiMostPop)
             .then(res =>{
                 store.arrPop = res.data.results
-                console.log(store.apiMostPop);
-                console.log(res.data.results);
             })
         },
         getAllMovies(){
@@ -49,13 +47,21 @@ export default{
             .then(res =>{
                 store.arrAllSeries = res.data.results
             })
+        },
+        getTopRated(){
+            axios.get(store.apiTopRated)
+            .then(res =>{
+                store.arrTopRated = res.data.results
+                console.log(store.arrTopRated);
+            })
         }
-
-},
+        
+    },
     mounted(){
         this.getMostPop()
         this.getAllMovies()
         this.getSeries()
+        this.getTopRated()
     }
 }
 

@@ -51,11 +51,36 @@ export default{
                 :title="card.title"
                 :original_title="card.original_title"
                 :lang="card.original_language"
-                :vote="card.vote_average"
+                :vote="(card.vote_average / 2) "
                 :image="card.backdrop_path"/>
                 </swiper-slide>
             </swiper>
         </div>
+        <div class="topRated">
+            <h2>PIU' VOTATI</h2>
+            
+            <swiper
+                :slidesPerView="8"
+                :spaceBetween="10"
+                :loop="true"
+                :pagination="{
+                clickable: true,
+                }"
+                :navigation="true"
+                :modules="modules"
+                class="mySwiper">
+                <swiper-slide v-for="card in store.arrTopRated " :key="card.id">
+                <mostPop
+                :key="card.id"
+                :title="card.title"
+                :original_title="card.original_title"
+                :lang="card.original_language"
+                :vote="Math.ceil(card.vote_average / 2)"
+                :image="card.backdrop_path"/>
+                </swiper-slide>
+            </swiper>
+        </div>
+        
 
         <div class="film">
             <h2>FILM</h2>
@@ -75,7 +100,7 @@ export default{
                     :title="card.title"
                     :original_title="card.original_title"
                     :lang="card.original_language"
-                    :vote="card.vote_average"
+                    :vote="Math.ceil(card.vote_average / 2)"
                     :image="card.backdrop_path"/>
                  </swiper-slide>
             </swiper>
@@ -97,7 +122,7 @@ export default{
                     :title="card.title"
                     :original_title="card.original_title"
                     :lang="card.original_language"
-                    :vote="card.vote_average"
+                    :vote="Math.ceil(card.vote_average / 2)"
                     :image="card.backdrop_path"/>
                 </swiper-slide>
             </swiper>
