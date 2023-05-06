@@ -32,9 +32,13 @@ export default{
 <template>
     <Jumbotron/>
     <main class="container-fluid">
-        <div class="mostPop">
-            <h2>PIU' POPOLARI</h2>
-            
+
+        <div 
+        v-if="store.arrAllMovies.length === 0 
+        ||
+        store.apiAllSeries.length === 0"
+        class="mostPop">
+            <h2>Più popolari</h2>    
             <swiper
                 :slidesPerView="8"
                 :spaceBetween="10"
@@ -55,8 +59,13 @@ export default{
                 </swiper-slide>
             </swiper>
         </div>
-        <div class="topRated">
-            <h2>PIU' VOTATI</h2>
+
+        <div
+        v-if="store.arrAllMovies.length === 0 
+        ||
+        store.apiAllSeries.length === 0"
+        class="topRated">
+            <h2>Più votati</h2>
             
             <swiper
                 :slidesPerView="8"
@@ -79,16 +88,13 @@ export default{
             </swiper>
         </div>
         
-
-        <div class="film">
-            <h2>FILM</h2>
+        <div v-if="store.arrAllMovies.length > 0" class="film">
+            <h2>Film</h2>
             <swiper
                 :slidesPerView="8"
                 :spaceBetween="10"
                 :loop="true"
-                :pagination="{
-                clickable: true,
-                }"
+                :pagination="{clickable: true}"
                 :navigation="true"
                 :modules="modules"
                 class="mySwiper">
@@ -102,8 +108,9 @@ export default{
                  </swiper-slide>
             </swiper>
         </div>
-        <div class="seriesTV">
-            <h2>SERIE TV</h2>
+
+        <div v-if="store.arrAllSeries.length > 0" class="seriesTV">
+            <h2>Serie TV</h2>
             <swiper
             :slidesPerView="8"
             :spaceBetween="10"
@@ -123,6 +130,29 @@ export default{
                 </swiper-slide>
             </swiper>
         </div>
+
+        <div class="action">
+            <h2>Azione</h2>
+            <swiper
+            :slidesPerView="8"
+            :spaceBetween="10"
+            :loop="true"
+            :pagination="{
+                clickable: true,
+            }"
+                :navigation="true"
+                :modules="modules"
+                class="mySwiper">
+                <swiper-slide v-for="card in store.arrGenres " :key="card.id">
+                    <mostPop
+                    :title="card.name || card.title"
+                    :lang="card.original_language"
+                    :vote="Math.ceil(card.vote_average / 2)"
+                    :image="card.backdrop_path"/>
+                </swiper-slide>
+            </swiper>
+        </div>
+
 
     </main>
 </template>

@@ -38,17 +38,14 @@ export default{
     height: 100%;
     width: 100%;
     .posters{
-        width: 100%;
-        height: 100%;
-        margin-bottom: 20px;
         position: relative;
         
         .card-text{
             width: 30%;
             position: absolute;
             overflow: hidden;
-            transition: all 1s;
             span{
+                font-size: 13px;
                 width: 100%;
                 height: 100%;
                 color: white;
@@ -60,15 +57,15 @@ export default{
                 position: absolute;
                 bottom: 50px;
                 left: 10px;
-                width: 30px;
-                height: 50px;
+                width: 20px;
+                height: 30px;
             }
         }
         h5{
             padding-top: 10px;
             color: white;
         }
-        .poster{
+        img.poster{
             padding-top: 20px;
             height: 100%;
             width: 100%;
@@ -85,6 +82,7 @@ export default{
         &:hover{
             .card-text{
                 overflow: visible;
+                transition: all 1s;
             }
         }
     }

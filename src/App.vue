@@ -52,7 +52,13 @@ export default{
             axios.get(store.apiTopRated)
             .then(res =>{
                 store.arrTopRated = res.data.results
-                console.log(store.arrTopRated);
+            })
+        },
+        getGenre(){
+            axios.get(store.apiGenresID)
+            .then(res =>{
+                store.arrGenres = res.data.genres
+                console.log(store.arrGenres);
             })
         }
         
@@ -62,6 +68,7 @@ export default{
         this.getAllMovies()
         this.getSeries()
         this.getTopRated()
+        this.getGenre()
     }
 }
 
