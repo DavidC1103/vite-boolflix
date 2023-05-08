@@ -11,9 +11,7 @@ export const store = reactive({
   searchMovie:'',
   apiTopRated:'https://api.themoviedb.org/3/movie/top_rated?api_key=184e820e32cadab24e0fe3a59c9aca6a&language=it-IT',
   arrTopRated:[],
-  apiGenresID:'https://api.themoviedb.org/3/genre/movie/list?api_key=184e820e32cadab24e0fe3a59c9aca6a&language=it-IT',
-  arrGenres:[]
+  apiUpcoming:'https://api.themoviedb.org/3/movie/upcoming?api_key=184e820e32cadab24e0fe3a59c9aca6a&language=it-IT',
+  arrUpcoming:[],
 
-
-    
 })

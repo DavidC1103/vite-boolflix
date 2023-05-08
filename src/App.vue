@@ -54,11 +54,11 @@ export default{
                 store.arrTopRated = res.data.results
             })
         },
-        getGenre(){
-            axios.get(store.apiGenresID)
+        getUpComing(){
+            axios.get(store.apiUpcoming)
             .then(res =>{
-                store.arrGenres = res.data.genres
-                console.log(store.arrGenres);
+                store.arrUpcoming = res.data.results
+                
             })
         }
         
@@ -68,7 +68,7 @@ export default{
         this.getAllMovies()
         this.getSeries()
         this.getTopRated()
-        this.getGenre()
+        this.getUpComing()
     }
 }
 
@@ -80,11 +80,10 @@ export default{
 
     <Main/>
  
+        
 </template>
 
 <style lang="scss">
 @use '../scss/main.scss' as *;
-
-
 
 </style>

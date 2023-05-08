@@ -11,7 +11,7 @@ export default{
       Swiper,
       SwiperSlide,
       mostPop,
-      Jumbotron
+      Jumbotron,
     },
     setup() {
       return {
@@ -32,12 +32,12 @@ export default{
 <template>
     <Jumbotron/>
     <main class="container-fluid">
-
+        <!--FILM-->
         <div 
         v-if="store.arrAllMovies.length === 0 
         ||
         store.apiAllSeries.length === 0"
-        class="mostPop">
+        class="mostPop" id="mostpop">
             <h2>Più popolari</h2>    
             <swiper
                 :slidesPerView="8"
@@ -54,12 +54,16 @@ export default{
                 :key="card.id"
                 :title="card.title"
                 :lang="card.original_language"
-                :vote="(card.vote_average / 2) "
-                :image="card.backdrop_path"/>
+                :vote="Math.ceil(card.vote_average / 2) "
+                :image="card.backdrop_path"
+                :description="card.overview"
+                />
+                
                 </swiper-slide>
             </swiper>
         </div>
-
+       
+        <!--SERIE TV-->
         <div
         v-if="store.arrAllMovies.length === 0 
         ||
@@ -87,8 +91,35 @@ export default{
                 </swiper-slide>
             </swiper>
         </div>
+
+
+        <!--IN USCITA-->
+        <div
+        v-if="store.arrAllMovies.length === 0 
+        ||
+        store.apiAllSeries.length === 0"
+         class="upComing">
+            <h2>In uscita</h2>
+            <swiper
+            :slidesPerView="8"
+            :spaceBetween="10"
+            :loop="true"
+            :pagination="{clickable: true}"
+            :navigation="true"
+            :modules="modules"
+             class="mySwiper">
+                <swiper-slide v-for="card in store.arrUpcoming " :key="card.id">
+                    <mostPop
+                    :title="card.name || card.title"
+                    :lang="card.original_language"
+                    :vote="Math.ceil(card.vote_average / 2)"
+                    :image="card.backdrop_path"/>
+                </swiper-slide>
+            </swiper>
+        </div>
         
-        <div v-if="store.arrAllMovies.length > 0" class="film">
+        <!--FILM SCELTI DALL'UTENTE-->
+        <div v-if="store.arrAllMovies.length > 0" class="film" id="film">
             <h2>Film</h2>
             <swiper
                 :slidesPerView="8"
@@ -109,6 +140,7 @@ export default{
             </swiper>
         </div>
 
+        <!--SERIE TV SCELTI DALL'UTENTE-->
         <div v-if="store.arrAllSeries.length > 0" class="seriesTV">
             <h2>Serie TV</h2>
             <swiper
@@ -131,27 +163,7 @@ export default{
             </swiper>
         </div>
 
-        <div class="action">
-            <h2>Azione</h2>
-            <swiper
-            :slidesPerView="8"
-            :spaceBetween="10"
-            :loop="true"
-            :pagination="{
-                clickable: true,
-            }"
-                :navigation="true"
-                :modules="modules"
-                class="mySwiper">
-                <swiper-slide v-for="card in store.arrGenres " :key="card.id">
-                    <mostPop
-                    :title="card.name || card.title"
-                    :lang="card.original_language"
-                    :vote="Math.ceil(card.vote_average / 2)"
-                    :image="card.backdrop_path"/>
-                </swiper-slide>
-            </swiper>
-        </div>
+       
 
 
     </main>
